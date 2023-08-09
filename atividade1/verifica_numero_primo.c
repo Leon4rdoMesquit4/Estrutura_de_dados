@@ -17,7 +17,7 @@ void isPrimeNumber(int number){
     }
 };
 
-int main(){
-    int pop = 7;
+int main(int argc, char *argv[]){
+    int pop = 34327;
     isPrimeNumber(pop);
 };
