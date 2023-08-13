@@ -23,9 +23,14 @@ void isPrimeNumber(int number){
 };
 
 int main(int argc, char *argv[]){
-    if (atoi(argv[1])){
-        isPrimeNumber(atoi(argv[1]));
-    } else {
-        printf("Error, something is wrong");
+    for (int i = 1; i <argc; i++){
+        int a = atoi(argv[i]);
+        if (a){
+            printf("Number %d: ", a);
+            isPrimeNumber(a);
+            printf("\n");
+        } else {
+            printf("Error, something is wrong in position %d ", i);
+        }
     }
 };
