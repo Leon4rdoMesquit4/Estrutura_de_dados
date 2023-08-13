@@ -26,7 +26,7 @@ int main(int argc, char *argv[]){
     for (int i = 1; i <argc; i++){
         int a = atoi(argv[i]);
         if (a){
-            printf("Number %d: ", a);
+            // printf("Number %d: ", a);
             isPrimeNumber(a);
             printf("\n");
         } else {
