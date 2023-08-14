@@ -30,7 +30,9 @@ int main(int argc, char *argv[]){
             isPrimeNumber(a);
             printf("\n");
         } else {
-            printf("Error, something is wrong in position %d ", i);
+            printf("0");
         }
     }
+
+    return 0;
 };
