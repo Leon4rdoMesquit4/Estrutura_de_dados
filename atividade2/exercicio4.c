@@ -10,7 +10,7 @@ Saída: 2
 #include <stdio.h>
 #define TAM 8
 
-int conta_int_array(int array[TAM], int numero){
+void conta_int_array(int array[TAM], int numero){
     int numerosIguais = 0;
 
     for (int i = 0; i < TAM; i++){
@@ -19,7 +19,7 @@ int conta_int_array(int array[TAM], int numero){
         }
     }
 
-    return numerosIguais;
+    printf("%d", numerosIguais);
 
 }
 
@@ -27,7 +27,7 @@ int main(void){
     int number = 7;
     int array[TAM] = {5, 7, 9, 6, 7, 11, 6, 5};
 
-    printf("%d", conta_int_array(array, number));
+    conta_int_array(array, number);
 
     return 0;
 }

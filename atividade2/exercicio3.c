@@ -10,21 +10,23 @@ Saída: 0
 #include <string.h>
 #define TAM 3
 
-int busca_string(char array[TAM][10], char string[10]){
+void busca_string(char array[TAM][10], char string[10]){
 
     for(int i = 0; i<TAM; i++){
-        if (strcmp(array[i], string) == 0) return 1;
+        if (strcmp(array[i], string) == 0){
+            printf("1");
+            return;
+        } 
     }
     
-
-    return 0;
+    printf("0");
 }
 
 int main(void){
     char array[TAM][10] = {"texto", "J", "EDA"};
-    char string[10] = "J";
+    char string[10] = "EDO";
 
-    printf("%d", busca_string(array, string));
+    busca_string(array, string);
 
     return 0;
 }

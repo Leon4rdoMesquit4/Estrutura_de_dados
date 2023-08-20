@@ -1,5 +1,6 @@
 /*
-Exercício 1 - Soma dos elementos de um array. Escreva uma função que recebe um array de números inteiros e retorna a soma de todos os elementos;
+Exercício 1 - Soma dos elementos de um array. Escreva uma função que recebe um array de números inteiros e 
+retorna a soma de todos os elementos;
 
 
 Exemplo: soma_array([5, 7, 9,6])
@@ -15,14 +16,13 @@ int soma_array(int array[TAM]){
         soma += array[i];
     }
 
-    return soma;
+    printf("%d", soma);
 }
 
 int main(void){
 
     int array[] = {5, 7, 9, 6};
-
-    printf("%d", soma_array(array));
+    soma_array(array);
 
     return 0;
 }

@@ -16,7 +16,6 @@ int menor_maior_array(int array[TAM])
     
 
     for(int i = 0; i < TAM; i++){
-        printf("\n%d, %d", i, array[i]);
         if (maiorNumero < array[i]) {
             maiorNumero = array[i];
         }
@@ -25,7 +24,7 @@ int menor_maior_array(int array[TAM])
             menorNumero = array[i];
         }
     }
-    printf("%d %d", menorNumero, maiorNumero);
+    printf("%d, %d", menorNumero, maiorNumero);
 }
 
 int main(void)

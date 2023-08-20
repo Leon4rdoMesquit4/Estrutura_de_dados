@@ -12,13 +12,10 @@ Saída: [25, 49, 81, 36]
 
 int* multiplica_array(int array[TAM], int array2[TAM]){
     int array3[TAM] = {0, 0, 0, 0};
-    printf("[");
     for (int i = 0; i < TAM; i++){
         array3[i] = array[i] * array2[i];
         printf("%d ", array3[i]);
     }
-    printf("]");
-    
 }
 
 int main(void){
