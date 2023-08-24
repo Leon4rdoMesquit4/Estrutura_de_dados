@@ -63,7 +63,7 @@ int main(int argc, char *argv[])
 
     if (file == NULL)
     {
-        printf("Fudeu");
+        printf("Erro de leitura");
         exit(1);
     }
 
