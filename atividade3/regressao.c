@@ -98,8 +98,6 @@ int main(int argc, char *argv[])
     float inclin = inclinacao(data, medX, medY);
     float intercep = interceptacao(medY, medX, inclin);
 
-    printf("Media de x: %d\nMedia de y: %f\n", medX , medY);
-    printf("Inclinacao: %f\n", inclin);
-    printf("Interceptacao: %f\n", intercep);
+    printf("y = %.1fx + %.0f", inclin, intercep);
     return 0;
 }
