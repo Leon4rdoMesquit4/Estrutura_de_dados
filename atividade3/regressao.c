@@ -19,7 +19,7 @@ int mediaX(Data x[records])
         // printf("%d\n", x[i].x);
     }
 
-    printf("%d", records);
+    // printf("%d", records);
 
     return soma / records;
 }
@@ -30,7 +30,7 @@ float mediaY(Data y[])
     for (int i = 0; i < records; i++)
     {
         soma += y[i].y;
-        printf("%.1f\n", y[i].y);
+        // printf("%.1f\n", y[i].y);
     }
 
     return soma /records;
