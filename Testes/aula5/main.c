@@ -21,8 +21,7 @@ int main(){
     
     switch (option){
         case 1:
-            adicionar_produto(produto, qtdProdutos);
-            qtdProdutos++;
+            qtdProdutos += adicionar_produto(produto, qtdProdutos);
             break;
         case 2:
             listar_produto(produto, qtdProdutos);
@@ -30,6 +29,11 @@ int main(){
         case 3:
             editar_produto(produto, qtdProdutos);
             system("cls");
+            break;
+        case 4:
+            qtdProdutos -= remover_produto(produto, qtdProdutos);
+            break;
+        default:
             break;
     }
     
