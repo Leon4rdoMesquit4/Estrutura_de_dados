@@ -45,8 +45,6 @@ int main(int argc, char* argv[]){
 
     int t =  strcmp("Tcarrao", "b");
 
-    printf("%d", t);
-
     fclose(file);
 
     exit(0);

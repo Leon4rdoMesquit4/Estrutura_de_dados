@@ -6,12 +6,6 @@
 void ordernarArrayPalavras(char string[][100], int n){
     int i = 0;
 
-    for (int i = 0; i < n; i++){
-        printf("%s | ",string[i]);
-    }
-
-     printf("\n");
-
     char ant[100];
 
     while(i < n){
@@ -51,9 +45,6 @@ void ordernarArrayPalavras(char string[][100], int n){
 
     fclose(ptr);
 
-    for (int i = 0; i < n; i++){
-        printf("%s | ",string[i]);
-    }
 }
 
 // void swap(int* n1, int* n2){
