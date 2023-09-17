@@ -14,5 +14,5 @@ Dedo
 Lapiz
 Ovelha
 Artrite
-Noz
+noz
 Rosa
