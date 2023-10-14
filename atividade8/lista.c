@@ -88,7 +88,6 @@ void lista_imprimir_inversa(No* L) {
 
 void lista_inserir_no_i(No* L, int i, char valor) {
     if (i < 0 || i > lista_quantidade_nos(L) - 1) {
-        printf("Número Inválido");
         exit(0);
     }
 
@@ -102,7 +101,6 @@ void lista_inserir_no_i(No* L, int i, char valor) {
 
 void lista_remover_no_i(No* L, int i) {
     if (i < 0 || i > lista_quantidade_nos(L) - 1) {
-        printf("Posicao inválida.\n");
         exit(0);
     }
 
@@ -113,9 +111,7 @@ void lista_remover_no_i(No* L, int i) {
         free(remove);
     } else if (L != NULL) {
         lista_remover_no_i(L->proximo_no, i - 1);
-    } else {
-        printf("ERRO, Fora de alcance\n");
-    }
+    } 
 }
 
 
