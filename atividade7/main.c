@@ -10,12 +10,12 @@ int main() {
 
     while (1) {
         printf("Valor atual: %d\n", valorAtual);
-        printf("Operação (+, -, *, /, u para desfazer, r para refazer, q para sair): ");
+        printf("Operação (+, -, *, /, d para desfazer, r para refazer, s para sair): ");
         scanf(" %c", &operacao);
 
-        if (operacao == 'q') {
+        if (operacao == 's') {
             break;
-        } else if (operacao == 'u') {
+        } else if (operacao == 'd') {
             if (!estaVazio(pilhaDesfazer)) {
                 empilhar(pilhaRefazer, valorAtual); 
                 valorAtual = desempilhar(pilhaDesfazer);
