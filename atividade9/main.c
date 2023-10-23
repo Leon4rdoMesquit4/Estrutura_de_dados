@@ -13,7 +13,6 @@ int main(int argc, char *argv[])
 
     if (arquivo == NULL)
     {
-        printf("Erro na leitura\n");
         return 1;
     }
 
@@ -27,14 +26,11 @@ int main(int argc, char *argv[])
 
         if (noTeste == NULL)
         {
-            printf("Erro ao alocar memória para os números.\n");
             fclose(arquivo);
             return 1;
         }
 
-        noTeste->valor = numero;
-        noTeste->proximo_no = cabeca;
-        cabeca = noTeste;
+        lista_inserir_no(cabeca, noTeste);
     }
 
     final = clock();
@@ -43,7 +39,7 @@ int main(int argc, char *argv[])
 
     fclose(arquivo);
 
-    cabeca = NULL; 
+
 
     arquivo = fopen("1kk_rand_float.csv", "r");
 
@@ -54,20 +50,19 @@ int main(int argc, char *argv[])
 
         if (noTeste == NULL)
         {
-            printf("Erro ao alocar memória para os números.\n");
             fclose(arquivo);
             return 1;
         }
 
         noTeste->valor = numero;
-        lista_inserir_no_ordenado(&cabeca, noTeste);
+        lista_inserir_no_ordenado(cabeca, noTeste);
     }
 
     final = clock();
     cpu_time = ((double)(final - inicio)) / CLOCKS_PER_SEC;
-    printf("tempo para inserir no de forma ordenada: %f segundos\n", cpu_time);
 
     fclose(arquivo);
 
+    lista_liberar(cabeca);
     return 0;
 }

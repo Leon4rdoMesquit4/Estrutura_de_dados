@@ -1,6 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "lista.h"
+
+typedef struct No {
+    float valor;
+    struct No* proximo_no;
+} No;
 
 No* no(float valor, No* proximo_no) {
     No* no = malloc(sizeof(No));
@@ -42,17 +46,17 @@ void lista_liberar(No* L) {
     }
 }
 
-void lista_inserir_no_ordenado(No* L, No* no) {
+void lista_inserir_no_ordenado(No** L, No* no) {
     No *aux = (No *)malloc(sizeof(No));
 
-    if (L == NULL) {
+    if (*L == NULL) {
         no->proximo_no = NULL;
-        L = no;
-    } else if (no->valor < (L)->valor){
-        no->proximo_no = L;
-        L = no;
+        *L = no;
+    } else if (no->valor < (*L)->valor){
+        no->proximo_no = *L;
+        *L = no;
     } else {
-        aux = L;
+        aux = *L;
         while(aux->proximo_no && no->valor > aux->proximo_no->valor){
             aux = aux->proximo_no;
         }
@@ -60,4 +64,27 @@ void lista_inserir_no_ordenado(No* L, No* no) {
         aux->proximo_no = no;
 
     }
+}
+
+int main(int argc, char const *argv[])
+{
+    No *cabeca = NULL;
+    No *teste = (No *)malloc(sizeof(No));
+    teste->valor = 9;
+
+    No *teste2 = (No *)malloc(sizeof(No));
+    teste2->valor = 10;
+
+    No *teste3 = (No *)malloc(sizeof(No));
+    teste3->valor = 1;
+
+    lista_inserir_no_ordenado(&cabeca, teste);
+    lista_inserir_no_ordenado(&cabeca, teste2);
+    lista_inserir_no_ordenado(&cabeca, teste3);
+
+    lista_imprimir(cabeca);
+
+    lista_liberar(cabeca);
+
+    return 0;
 }
