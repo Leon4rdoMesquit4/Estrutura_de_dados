@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
 
     fclose(arquivo);
 
-
+    No *cabeca2 = NULL;
 
     arquivo = fopen("1kk_rand_float.csv", "r");
 
@@ -55,14 +55,16 @@ int main(int argc, char *argv[])
         }
 
         noTeste->valor = numero;
-        lista_inserir_no_ordenado(cabeca, noTeste);
+        lista_inserir_no_ordenado(cabeca2, noTeste);
     }
 
     final = clock();
     cpu_time = ((double)(final - inicio)) / CLOCKS_PER_SEC;
+    printf("tempo para inserir no de forma ordenada: %f segundos\n", cpu_time);
 
     fclose(arquivo);
 
     lista_liberar(cabeca);
+    lista_liberar(cabeca2);
     return 0;
 }
