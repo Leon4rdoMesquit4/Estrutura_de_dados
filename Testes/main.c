@@ -87,5 +87,24 @@ int main(int argc, char const *argv[])
 
     lista_liberar(cabeca);
 
+    No* lista = NULL;
+
+    for (int i = 1; i <= 1000000; i++) {
+        No* novo_no = (No*)malloc(sizeof(No));
+        novo_no->valor = (float)i;
+        novo_no->proximo_no = lista;
+        lista = novo_no;
+    }
+
+    // Chame a função para imprimir a lista
+    lista_imprimir(lista);
+
+    // Libere a memória alocada para os nós (importante)
+    while (lista != NULL) {
+        No* temp = lista;
+        lista = lista->proximo_no;
+        free(temp);
+    }
+
     return 0;
 }

@@ -16,7 +16,6 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    int tamanho = 1000000;
     float numero;
 
     inicio = clock();

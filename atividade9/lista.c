@@ -13,6 +13,7 @@ void lista_inserir_no(No* L, No* no) {
     if(L != NULL) {
         if(L->proximo_no == NULL) {
             L->proximo_no = no;
+            printf("Bom dia");
         } 
         else {
             lista_inserir_no(L->proximo_no, no);
@@ -26,6 +27,7 @@ void lista_imprimir(No* L) {
         printf("%.2f\n", atual->valor);
         atual = atual->proximo_no;
     }
+
 }
 
 int lista_quantidade_nos(No* L) {
