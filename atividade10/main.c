@@ -1,132 +1,63 @@
-#include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include <stdint.h>
+#include <stdlib.h>
 #include <stdbool.h>
+#include "tabela_hash.h"
 
-#define MAX_NAME 100
-#define TABLE_SIZE 10
+#define SIZE 10
 
-typedef struct {
-    char name[MAX_NAME];
-    int age;
-} person;
+struct DataItem* hashArray[SIZE];
+struct DataItem* itemVazio;
+char* item;
 
-person * hash_table[TABLE_SIZE];
+void display() {
+    int i = 0;
 
-unsigned int hash(char *name){
-    int length = strnlen(name, MAX_NAME);
-    unsigned int hash_value = 0;
-
-    for(int i = 0; i < length; i++){
-        hash_value += name[i];
-        hash_value = (hash_value * name[i]) % TABLE_SIZE;
-    }
-
-    return hash_value;
-}
-
-void init_hash_table() {
-    for (int i = 0; i < TABLE_SIZE; i++) {
-        hash_table[i] = NULL;
-    }
-}
-
-void print_table() {
-    printf("Start\n");
-    for (int i = 0; i < TABLE_SIZE; i ++){
-        if (hash_table[i] == NULL){
-             printf("\t%i\t----\n", i);
-        } else {
-            printf("\t%i\t%s\n", i, hash_table[i]->name);
+    for (i = 0; i < SIZE; i++) {
+        if (hashArray[i] != NULL) {
+            printf(" (%s, %s)", hashArray[i]->chave, hashArray[i]->dado);
+            printf("\n");
+        }
+        else {
+            printf(" ~~ ");
+            printf("\n");
         }
     }
-    printf("End\n");
 }
 
-bool hash_table_insert(person *p) {
-    if (p == NULL) return false;
-    int index = hash(p->name);
-    if (hash_table[index] != NULL){
-        return false;
+void printChaveValor(char* chave) {
+    item = hash_table_get(chave);
+    if (item != NULL) {
+        printf("(%s : %s)\n", chave, item);
     }
-
-    hash_table[index] = p;
-    return true;
-}
-
-person * hash_table_lookup (char *name) {
-    int index = hash(name);
-    if (hash_table[index] != NULL &&
-        strncmp(hash_table[index]->name, name, TABLE_SIZE) == 0){
-            return hash_table[index];
-    } else {
-        return NULL;
+    else {
+        printf("Chave nao encontrada\n");
     }
 }
 
-person *hash_table_delete(char *name){
-    int index = hash(name);
-    if (hash_table[index] != NULL &&
-        strncmp(hash_table[index]->name, name, TABLE_SIZE) == 0){
-            person *tmp = hash_table[index];
-            hash_table[index] = NULL;
-            return tmp;
-    } else {
-        return NULL;
-    }
+int main() {
+    itemVazio = (struct DataItem*)malloc(sizeof(struct DataItem));
+    itemVazio->dado = NULL;
+    itemVazio->chave = NULL;
+
+    hash_table_put("djoko", "Servia");
+    hash_table_put("messi", "Argentina");
+    hash_table_put("cr7", "Portugal");
+    hash_table_put("key4", "value4");
+
+    hash_table_put("key5", "value5");
+    hash_table_put("key6", "value6");
+    hash_table_put("key7", "");
+    hash_table_put("key8", "value8");
+
+    printChaveValor("djoko");
+    printChaveValor("cr7");
+    printChaveValor("key7");
+
+    hash_table_remove("messi");
+    printChaveValor("messi");
+
+    printf("%d", hash_table_contains("messi"));
+
+    exit(0);
 }
-
-int main(){
-
-    init_hash_table();
-    print_table();
-
-    person jacob = {.name="Jacob", .age=256};
-    person kate = {.name="Kate", .age=20};
-    person mpho = {.name="Mpho", .age=50};
-
-    hash_table_insert(&jacob);
-    hash_table_insert(&kate);
-    hash_table_insert(&mpho);
-    print_table();
-
-    person *tmp = hash_table_lookup("Mpho");
-
-    if (tmp == NULL) {
-        printf("Not found!\n");
-    } else {
-        printf("Found %s.\n", tmp->name);
-    }
-
-    tmp = hash_table_lookup("George");
-
-    if (tmp == NULL) {
-        printf("Not found!\n");
-    } else {
-        printf("Found %s.\n", tmp->name);
-    }
-
-    hash_table_delete("Mpho");
-    tmp = hash_table_lookup("Mpho");
-
-    if (tmp == NULL) {
-        printf("Not found!\n");
-    } else {
-        printf("Found %s.\n", tmp->name);
-    }
-
-    print_table();
-
-    // https://youtu.be/2Ti5yvumFTU?si=9lU4L5Lf9Ovp_Fvd
-    // PAREi na parte do updating insert
-
-    // printf("Jacob => %u\n", hash("Jacob"));
-    // printf("Natalie => %u\n", hash("Natalie"));
-    // printf("Maria => %u\n", hash("Maria"));
-    // printf("Jose => %u\n", hash("Jose"));
-    // printf("Theo => %u\n", hash("Theo"));
-    // printf("Leo => %u\n", hash("Leo"));
-    // printf("Marcos => %u\n", hash("Marcos"));
-}
-
